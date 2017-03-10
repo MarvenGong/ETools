@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>etekcity web</title>
+    <link rel="stylesheet" href="http://www.gongminghua.site/application/views/resources/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="http://www.gongminghua.site/application/views/resources/css/bootstrap-theme.min.css" type="text/css"/>
+    <link rel="stylesheet" href="http://www.gongminghua.site/application/views/resources/css/style.css" type="text/css"/>
+</head>
+<body>
+<div class="container wraper">
+    <h3 class="title">Etekcity前端开发公共函数库</h3>
+    <table class="table table-bordered" width="100%" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>分类</th>
+                <th>调用方法</th>
+                <th>作用</th>
+                <th>参数说明</th>
+                <th>例子</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">url请求相关</td>
+                <td>ETools.deparam(str)</td>
+                <td>将jquery序列化表单之后得到的参数字符串转换成标准的json对象</td>
+                <td>str,即要格式化的字符串</td>
+                <td>ETools.deparam("aaa=bbb&ccc=ddd")输出结果{aaa:bbb,ccc:ddd}
+                    <p><a href="/ETools/formDeparam">查看演示>></a> </p>
+                </td>
+            </tr>
+            <tr>
+                <td>ETools.urlParamToObj(url)</td>
+                <td>将连接中的get请求参数转换成json对象</td>
+                <td>url:链接</td>
+                <td>ETools.deparam("www.baidu.com?aaa=bbb&ccc=ddd")输出结果{aaa:bbb,ccc:ddd}</td>
+            </tr>
+        </tbody>
+        <tr>
+            <td>事件</td>
+            <td>ETools.stopPropagation(event)</td>
+            <td>阻止事件向上冒泡，点击某元素不会触发父元素的事件</td>
+            <td>event:事件对象</td>
+            <td><code>ETools.stopPropagation(event)</code></td>
+        </tr>
+        <tbody>
+            <tr>
+                <td rowspan="5">时间日期相关</td>
+                <td>ETools.datetime.compareDate(startDate,endDate)</td>
+                <td>比较两个日期的大小</td>
+                <td>日期格式"yyyy-mm-dd",如果返回值为-1，则前者大于后者，为0两者相等，为1，后者大于前者</td>
+                <td><code>ETools.datetime.compareDate("2015-12-11","2015-12-12")</code></td>
+            </tr>
+            <tr>
+                <td>ETools.datetime.compareTime(startTime,endTime)</td>
+                <td>比较两个时间的大小</td>
+                <td>日期格式"yyyy-mm-dd h:mi:s",如果返回值为-1，则前者大于后者，为0两者相等，为1，后者大于前者</td>
+                <td><code>ETools.datetime.compareDate("2015-12-11 12:10:00","2015-12-12 12:10:00")</code></td>
+            </tr>
+            <tr>
+                <td>ETools.datetime.arriveTimerFormat(s)</td>
+                <td>将秒数转换成对应的多少小时，多少分多少秒（用于倒计时的显示）</td>
+                <td>s:要计算的秒数</td>
+                <td>ETools.datetime.arriveTimerFormat(52010)->[0, 14, 26, 50, "14:26:50"]</td>
+            </tr>
+            <tr>
+                <td>ETools.datetime.format(date,formatStr)</td>
+                <td>将Date类型的时间转换成指定格式的字符串</td>
+                <td><p>date:日期类型的对象（如：new Data()）</p>formatStr：想要的时间格式如："yyyy-mm-dd h:m:s 星期w"</td>
+                <td>ETools.datetime.Format(new Date(),"yyyy-MM-dd h:m:s 星期w")->"2015-16-24 15:16:15 星期四"</td>
+            </tr>
+            <tr>
+                <td>ETools.datetime.parse(timeStr)</td>
+                <td>将时间字符串转换成对应的时间戳</td>
+                <td><p>timeStr:时间字符串（如："2015-16-24 15:16:15"）</p></td>
+                <td>ETools.datetime.parse("2015-16-24 15:16:15")->1461482175</td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td rowspan="2">html格式操作</td>
+                <td>ETools.html.htmlEncode(str)</td>
+                <td>把html中的常见符号转换成特殊符号码，如"<"转换成<pre>"&amp;lt;"</pre></td>
+                <td>参数str，要转换的html代码</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ETools.html.htmlDecode(str)</td>
+                <td>把html代码转换成html元素</td>
+                <td>参数str，要转换的html字符串</td>
+                <td></td>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td rowspan="2">页面操作</td>
+                <td>ETools.page.addFavorite(url,title)</td>
+                <td>将页面添加到浏览器收藏夹</td>
+                <td>url:要添加的地址信息。title:在收藏夹中的名字</td>
+                <td>ETools.page.addFavorite("www.baidu.com","百度")</td>
+            </tr>
+            <tr>
+                <td>ETools.page.addHome(url)</td>
+                <td>将页面设为浏览器的首页</td>
+                <td>url:要添加的地址信息。</td>
+                <td>ETools.page.addFavorite("www.baidu.com")</td>
+            </tr>
+        </tbody>
+        <tbody>
+        <tr>
+            <td rowspan="2">动态加载</td>
+            <td>ETools.loadStyle(styleUrl)</td>
+            <td>动态加载样式表</td>
+            <td>styleUrl：要加载的样式文件的地址</td>
+            <td>ETools.loadStyle("css/style.css")</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr>
+            <td rowspan="2">浏览器信息获取</td>
+            <td>ETools.getExplorerInfo()</td>
+            <td></td>
+            <td>返回浏览器的名称以及版本信息{browerName:"google",version:"3.10.101.1"}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr>
+            <td rowspan="2">字符串操作</td>
+            <td>ETools.string.getStrLength(str)</td>
+            <td>获取字符串长度，中文字符按两个长度计算</td>
+            <td>str:要计算的字符串</td>
+            <td>ETools.string.getStrLength("ilove你")->7</td>
+        </tr>
+        <tr>
+            <td>ETools.string.trim(str)</td>
+            <td>去掉字符串左右的空格</td>
+            <td>str:要去空格的字符串</td>
+            <td>ETools.string.getStrLength(" aaa  ")->"aaa"</td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr>
+            <td rowspan="15">表单验证</td>
+            <td>ETools.vertify.isURL(str)</td>
+            <td>验证url地址</td>
+            <td></td>
+            <td>ETools.vertify.isURL("www.baidu.com")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isEmpty(str)</td>
+            <td>验证是否为空</td>
+            <td></td>
+            <td>ETools.vertify.isEmpty(" ")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isDigit(str)</td>
+            <td>验证是否是数字</td>
+            <td></td>
+            <td>ETools.vertify.isDigit("2.0")->false</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isTelephone(str)</td>
+            <td>验证固定电话</td>
+            <td></td>
+            <td>ETools.vertify.isTelephone("023-55813950")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isMobile(str)</td>
+            <td>验证手机号码</td>
+            <td></td>
+            <td>ETools.vertify.isMobile("15696544221")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isQQ(str)</td>
+            <td>验证QQ号</td>
+            <td></td>
+            <td>ETools.vertify.isQQ("1634251421")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isEmail(str)</td>
+            <td>验证邮箱地址</td>
+            <td></td>
+            <td>ETools.vertify.isEmail("2542152@qq.com")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isIDCard(str)</td>
+            <td>验证身份证号码</td>
+            <td></td>
+            <td>ETools.vertify.isIDCard("500235199008205570")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isPlusDigit(str)</td>
+            <td>验证是否是无符号正整数</td>
+            <td></td>
+            <td>ETools.vertify.isPlusDigit("52")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isChinese(str)</td>
+            <td>验证中文字符</td>
+            <td></td>
+            <td>ETools.vertify.isChinese("我爱你")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isDate(str)</td>
+            <td>验证日期</td>
+            <td></td>
+            <td>ETools.vertify.isDate("2015-12-12")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isPostalCode(str)</td>
+            <td>验证邮政编码</td>
+            <td></td>
+            <td>ETools.vertify.isPostalCode("400521")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isRegisterUserName(str)</td>
+            <td>验证登录名，只能输入5-20个以字母开头、可带数字、“_”、“.”的字串</td>
+            <td></td>
+            <td>ETools.vertify.isRegisterUserName("gong163")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isTrueName(str)</td>
+            <td>校验用户姓名：只能输入1-30个以字母开头的字串</td>
+            <td></td>
+            <td>ETools.vertify.isTrueName("龚明华")->true</td>
+        </tr>
+        <tr>
+            <td>ETools.vertify.isPassword(str)</td>
+            <td>校验密码：只能输入6-20个字母、数字、下划线</td>
+            <td></td>
+            <td>ETools.vertify.isPassword("gong1632542142")->true</td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr>
+            <td rowspan="3">Cookie操作</td>
+            <td>ETools.cookie.setCookie(name, value, Hours)</td>
+            <td>设置Cookie值</td>
+            <td>name:cookie的key，value:cookie的value，Hours：Cookie的超时时间</td>
+            <td>ETools.cookie.setCookie("username", "xiaoming", 0.5)</td>
+        </tr>
+        <tr>
+            <td>ETools.cookie.getCookie(name)</td>
+            <td>获取Cookie值</td>
+            <td>name:cookie的key</td>
+            <td>ETools.cookie.getCookie("username")->"xiaoming"</td>
+        </tr>
+        <tr>
+            <td>ETools.cookie.delCookie(name)</td>
+            <td>删除Cookie</td>
+            <td>name:cookie的key</td>
+            <td>ETools.cookie.delCookie("username")</td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr>
+            <td rowspan="2">html格式操作</td>
+            <td>ETools.openWindow(url,windowName,width,height)</td>
+            <td>打开一个弹窗窗口</td>
+            <td>url打开的链接，windowName窗口的title，width窗口宽度，height窗口高度</td>
+            <td>ETools.openWindow("www.baidu.com","百度",500,600)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+
+        <tbody>
+            <tr>
+                <td>jquery插件</td>
+                <td>checkAll()</td>
+                <td>表格的行的全选和反全选</td>
+                <td></td>
+                <td>$(".checkAll").checkAll();需要给复选框绑定checkAll()事件。为其加上data-table属性，属性值指向要执行全选的table的id。
+                    如果有多个复选框共同作用于同一个表格，给这些复选框加上相同的data-table属性值即可
+                    <p><a href="/ETools/checkAll">查看演示>></a> </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-bottom: 30px;">
+        <a href="http://etekcityweb.sinaapp.com/resources/ETools/ETools.zip" class="btn btn-block btn-primary btn-md" target="_blank">下载(v1.1)</a>
+    </div>
+</div>
+<{include "common/footer.html"}>
+<script type="text/javascript" src="<{$BASEURL}>application/views/dist/ETools/etek-js-unit.js"></script>
+<script>
+    $(".wraper").css({"min-height":$(window).height()})
+</script>
+</body>
+</html>

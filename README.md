@@ -6,6 +6,7 @@
 + 下载并在页面引入etools.js
 
     直接调用ETool对象中得方法，如`console.log(ETools.extend(true,{},{"age":23}));`
++ Git 仓库地址 https://github.com/MarvenGong/ETools 
 ***
 ### 详细文档
 #### 对象相关

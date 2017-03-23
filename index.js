@@ -602,28 +602,31 @@ ETools.datetime = {
 /**
  * 全选和反全选
  */
-$.fn.checkAll = function () {
-    $(this).click(function () {
-        let _table = $(this).attr("data-table");
-        if ($(this).is(":checked")) {
-            $("#" + _table + " input:checkbox").each(function (index, element) {
-                this.checked = true;
-            });
-            $(".checkAll").each(function (index, ele) {
-                if ($(ele).attr("data-table") == _table) {
-                    ele.checked = true;
-                }
-            });
-        } else {
-            $("#" + _table + " input:checkbox").each(function (index, element) {
-                this.checked = false;
-            });
-            $(".checkAll").each(function (index, ele) {
-                if ($(ele).attr("data-table") == _table) {
-                    ele.checked = false;
-                }
-            });
-        }
-    });
-};
+if (typeof $==="object"){
+    $.fn.checkAll = function () {
+        $(this).click(function () {
+            let _table = $(this).attr("data-table");
+            if ($(this).is(":checked")) {
+                $("#" + _table + " input:checkbox").each(function (index, element) {
+                    this.checked = true;
+                });
+                $(".checkAll").each(function (index, ele) {
+                    if ($(ele).attr("data-table") == _table) {
+                        ele.checked = true;
+                    }
+                });
+            } else {
+                $("#" + _table + " input:checkbox").each(function (index, element) {
+                    this.checked = false;
+                });
+                $(".checkAll").each(function (index, ele) {
+                    if ($(ele).attr("data-table") == _table) {
+                        ele.checked = false;
+                    }
+                });
+            }
+        });
+    };
+}
+
 

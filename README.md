@@ -8,6 +8,9 @@
     直接调用ETool对象中得方法，如`console.log(ETools.extend(true,{},{"age":23}));`
 + Git 仓库地址 https://github.com/MarvenGong/ETools 
 ***
+### 版本说明
+* 1.0.9修正了deparam函数依赖jquery的$.each函数的问题  
+
 ### 详细文档
 #### 对象相关
 + `ETools.extend(deep,obj1,obj2)`

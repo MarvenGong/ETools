@@ -91,24 +91,25 @@ ETools.deparam=function(params) {
 	var data = {}, pairs, lastPart;
 	if (params && paramTest.test(params)) {
 		var pairs = params.split('&');
-		$.each(pairs, function (index,pair) {
-			var parts = pair.split('='), key = prep(parts.shift()), value = prep(parts.join('=')), current = data;
-			if (key) {
-				parts = key.match(keyBreaker);
-				for (var j = 0, l = parts.length - 1; j < l; j++) {
-					if (!current[parts[j]]) {
-						current[parts[j]] = digitTest.test(parts[j + 1]) || parts[j + 1] === '[]' ? [] : {};
-					}
-					current = current[parts[j]];
-				}
-				lastPart = parts.pop();
-				if (lastPart === '[]') {
-					current.push(value);
-				} else {
-					current[lastPart] = value;
-				}
-			}
-		});
+        for(let index=0;index<pairs.length;index++){
+            let pair=pairs[index];
+            let parts = pair.split('='), key = prep(parts.shift()), value = prep(parts.join('=')), current = data;
+            if (key) {
+                parts = key.match(keyBreaker);
+                for (let j = 0, l = parts.length - 1; j < l; j++) {
+                    if (!current[parts[j]]) {
+                        current[parts[j]] = digitTest.test(parts[j + 1]) || parts[j + 1] === '[]' ? [] : {};
+                    }
+                    current = current[parts[j]];
+                }
+                lastPart = parts.pop();
+                if (lastPart === '[]') {
+                    current.push(value);
+                } else {
+                    current[lastPart] = value;
+                }
+            }
+        }
 	}
 	return data;
 };

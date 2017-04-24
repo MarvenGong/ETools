@@ -95,7 +95,8 @@ ETools.deparam = function (params) {
     let data = {}, pairs, lastPart;
     if (params && paramTest.test(params)) {
         let pairs = params.split('&');
-        $.each(pairs, function (index, pair) {
+        for(let index=0;index<pairs.length;index++){
+            let pair=pairs[index];
             let parts = pair.split('='), key = prep(parts.shift()), value = prep(parts.join('=')), current = data;
             if (key) {
                 parts = key.match(keyBreaker);
@@ -112,7 +113,7 @@ ETools.deparam = function (params) {
                     current[lastPart] = value;
                 }
             }
-        });
+        }
     }
     return data;
 };

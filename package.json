@@ -1,11 +1,11 @@
 {
   "name": "etools",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "etekcity js tools",
-  "main": "index.js",
+  "main": "etools.js",
   "keyword":"etools",
   "scripts": {
-    "test": "test"
+
   },
   "author": "marvengong@etekcity.com.cn",
   "license": "ISC"

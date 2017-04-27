@@ -87,6 +87,21 @@
     <p>timeStr:时间字符串（如："2015-16-24 15:16:15"）</p>
 
     `ETools.datetime.parse("2015-16-24 15:16:15")->1461482175`
+    
++ `ETools.datetime.getNewDay(dataStr,addNumber)`
+    
+    日期加上天数得到新的日期
+    
+    dateTemp 需要参加计算的日期，days要添加的天数，返回新的日期，日期格式：YYYY-MM-DD
+    
+    参数：dataStr原来的日期（如：“2014-12-1”）
+    
+    addNumber要增加或减少的天数，减少就给负数值
+    
+    如：ETools.datetime.getNewDay("2017-12-1",2) -- "2017-12-3"
+    
+    ETools.datetime.getNewDay("2017-12-1",-2) -- "2017-11-29"
+    
 
 ####html格式操作
 + `ETools.html.htmlEncode(str)`
@@ -144,6 +159,13 @@
     str:要去空格的字符串
 
     ETools.string.getStrLength(" aaa  ")->"aaa"
++ ETools.string.number2String(_number)
+    
+    参数 _number ： 要转换的数字
+    
+    把1,2,3,4....,99999 类型的数字转换成中文字符串
+    
+    如：ETools.string.number2String(_123) -> “一百二十三”
 
 #### 表单验证
 + `ETools.vertify.isURL(str)`

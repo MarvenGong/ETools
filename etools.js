@@ -19,11 +19,11 @@
      * @returns {*}
      */
     ETools.extend = (deep, target, options) => {
-        let copyIsArray;
-        let toString = Object.prototype.toString;
-        let hasOwn = Object.prototype.hasOwnProperty;
+        var copyIsArray;
+        var toString = Object.prototype.toString;
+        var hasOwn = Object.prototype.hasOwnProperty;
 
-        const class2type = {
+        var class2type = {
             '[object Boolean]': 'boolean',
             '[object Number]': 'number',
             '[object String]': 'string',
@@ -34,19 +34,19 @@
             '[object Object]': 'object'
         };
 
-        let type = function (obj) {
+        var type = function (obj) {
             return obj == null ? String(obj) : class2type[toString.call(obj)] || "object";
         };
 
-        let isWindow = function (obj) {
+        var isWindow = function (obj) {
             return obj && typeof obj === "object" && "setInterval" in obj;
         };
 
-        let isArray = Array.isArray || function (obj) {
+        var isArray = Array.isArray || function (obj) {
                 return type(obj) === "array";
             };
 
-        let isPlainObject = function (obj) {
+        var isPlainObject = function (obj) {
             if (!obj || type(obj) !== "object" || obj.nodeType || isWindow(obj)) {
                 return false;
             }
@@ -97,12 +97,12 @@
         var data = {}, pairs, lastPart;
         if (params && paramTest.test(params)) {
             var pairs = params.split('&');
-            for (let index = 0; index < pairs.length; index++) {
-                let pair = pairs[index];
-                let parts = pair.split('='), key = prep(parts.shift()), value = prep(parts.join('=')), current = data;
+            for (var index = 0; index < pairs.length; index++) {
+                var pair = pairs[index];
+                var parts = pair.split('='), key = prep(parts.shift()), value = prep(parts.join('=')), current = data;
                 if (key) {
                     parts = key.match(keyBreaker);
-                    for (let j = 0, l = parts.length - 1; j < l; j++) {
+                    for (var j = 0, l = parts.length - 1; j < l; j++) {
                         if (!current[parts[j]]) {
                             current[parts[j]] = digitTest.test(parts[j + 1]) || parts[j + 1] === '[]' ? [] : {};
                         }
@@ -190,7 +190,7 @@
                         netscape.security.PrivilegeManager
                             .enablePrivilege("UniversalXPConnect");
                     } catch (e) {
-                        alert("该操作被浏览器拒绝，如果想启用该功能，请在地址栏内输入 about:config,然后将项 signed.applets.codebase_principal_support 值该为true");
+                        alert("该操作被浏览器拒绝，如果想启用该功能，请在地址栏内输入 about:config,然后将项 signed.appvars.codebase_principal_support 值该为true");
                     }
                 }
                 var prefs = Components.classes['@mozilla.org/preferences-service;1']
@@ -349,6 +349,42 @@
                 newary = newary.substr(1)
             }//处理前面的0
             return newary;
+        },
+        /**
+         * 生成一个唯一标识字符串
+         * @returns {string}
+         */
+        generateUUID() {
+          var d = new Date().getTime();
+          var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+          });
+          return uuid;
+        },
+        /**
+         * 数字相加，包括浮点数相加，不会丢失精度
+         * @param num1
+         * @param num2
+         * @returns {number}
+         */
+        addNum(num1, num2) {
+          var sq1;
+          var sq2;
+          var m;
+          try {
+            sq1 = num1.toString().split('.')[1].length;
+          } catch (e) {
+            sq1 = 0;
+          }
+          try {
+            sq2 = num2.toString().split('.')[1].length;
+          } catch (e) {
+            sq2 = 0;
+          }
+          m = Math.pow(10, Math.max(sq1, sq2));
+          return (num1 * m + num2 * m) / m;
         }
     };
     /**
@@ -678,7 +714,7 @@
     if (typeof $==="object"){
         $.fn.checkAll = function () {
             $(this).click(function () {
-                let _table = $(this).attr("data-table");
+                var _table = $(this).attr("data-table");
                 if ($(this).is(":checked")) {
                     $("#" + _table + " input:checkbox").each(function (index, element) {
                         this.checked = true;
@@ -704,5 +740,3 @@
     return ETools;
 
 })));
-
-

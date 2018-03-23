@@ -6,24 +6,25 @@
 + 下载并在页面引入etools.js
 
     直接调用ETool对象中得方法，如`console.log(ETools.extend(true,{},{"age":23}));`
-+ Git 仓库地址 https://github.com/MarvenGong/ETools 
++ Git 仓库地址 https://github.com/MarvenGong/ETools
 ***
 ### 版本说明
-* 1.0.9修正了deparam函数依赖jquery的$.each函数的问题  
+* 1.2.2  修正了部分bug，新增string下的generateUUID和addNum方法
+* 1.0.9  修正了deparam函数依赖jquery的$.each函数的问题  
 
 ### 详细文档
 #### 对象相关
 + `ETools.extend(deep,obj1,obj2)`
-      
+
     作用：类似于jquery.extend方法，合并json对象，并将合并后的对象保存到obj1中作为返回值
-      
+
     参数：
         1. deep,是否深度复制，设为true，会复制对象中嵌套的对象。
         2. obj1,obj2,要合并的对象
-      
+
     案例：`ETools.extend(true,{"name":"zhangsan",gender:"male"},{"age":12})`
             输出结果`{"name":"zhangsan",gender:"male","age":12}`
-      
+
     说明，我们可以将obj1设为空{}，用这个方法克隆一个对象，解决引用类型赋值的问题
 #### url请求相关
 + `ETools.deparam(str)`
@@ -47,7 +48,7 @@
 + `ETools.stopPropagation(event)`
 
     阻止事件向上冒泡，点击某元素不会触发父元素的事件
-        
+
     event:事件对象
 
     <code>ETools.stopPropagation(event)</code>
@@ -87,21 +88,21 @@
     <p>timeStr:时间字符串（如："2015-16-24 15:16:15"）</p>
 
     `ETools.datetime.parse("2015-16-24 15:16:15")->1461482175`
-    
+
 + `ETools.datetime.getNewDay(dataStr,addNumber)`
-    
+
     日期加上天数得到新的日期
-    
+
     dateTemp 需要参加计算的日期，days要添加的天数，返回新的日期，日期格式：YYYY-MM-DD
-    
+
     参数：dataStr原来的日期（如：“2014-12-1”）
-    
+
     addNumber要增加或减少的天数，减少就给负数值
-    
+
     如：ETools.datetime.getNewDay("2017-12-1",2) -- "2017-12-3"
-    
+
     ETools.datetime.getNewDay("2017-12-1",-2) -- "2017-11-29"
-    
+
 
 ####html格式操作
 + `ETools.html.htmlEncode(str)`
@@ -141,7 +142,7 @@
 
 #### 浏览器信息获取
 + `ETools.getExplorerInfo()`
-            
+
     返回浏览器的名称以及版本信息{browerName:"google",version:"3.10.101.1"}
 
 #### 字符串操作
@@ -159,13 +160,25 @@
     str:要去空格的字符串
 
     ETools.string.getStrLength(" aaa  ")->"aaa"
-+ ETools.string.number2String(_number)
-    
-    参数 _number ： 要转换的数字
-    
++ ETools.string.number2String(number)
+
+    参数 number ： 要转换的数字
+
     把1,2,3,4....,99999 类型的数字转换成中文字符串
-    
-    如：ETools.string.number2String(_123) -> “一百二十三”
+
+    如：ETools.string.number2String(123) -> “一百二十三”
+
++ ETools.string.generateUUID()
+
+  生成一个唯一标识的字符串（UUID算法）
+
++ ETools.string.addNum(number1, number2)
+
+  参数 number1;number2 ： 要相加的两个数字
+
+  包含浮点数的两个数相加，解决丢失精度的问题
+
+  如：ETools.string.addNum(1.1， 1.2) -> “2.3” 如果直接执行1.1+1.2会出现等于2.299999999999999999999的情况
 
 #### 表单验证
 + `ETools.vertify.isURL(str)`
@@ -179,112 +192,112 @@
 
     ETools.vertify.isEmpty(" ")->true
 + `ETools.vertify.isDigit(str)`
-        
+
     验证是否是数字
-        
+
     ETools.vertify.isDigit("2.0")->false
 + `ETools.vertify.isTelephone(str)`
-        
+
     验证固定电话
 
     ETools.vertify.isTelephone("023-55813950")->true
 + `ETools.vertify.isMobile(str)`
-        
+
     验证手机号码
-        
+
     ETools.vertify.isMobile("15696544221")->true
 + `ETools.vertify.isQQ(str)`
-        
+
     验证QQ号
-        
+
     ETools.vertify.isQQ("1634251421")->true
 + `ETools.vertify.isEmail(str)`
-        
+
     验证邮箱地址
-        
+
     ETools.vertify.isEmail("2542152@qq.com")->true
 + `ETools.vertify.isIDCard(str)`
-        
+
     验证身份证号码
-        
+
     ETools.vertify.isIDCard("500235199008205570")->true
 + ` ETools.vertify.isPlusDigit(str)`
-        
+
     验证是否是无符号正整数
-        
+
     ETools.vertify.isPlusDigit("52")->true
 + `ETools.vertify.isChinese(str)`
-        
+
     验证中文字符
-        
+
     ETools.vertify.isChinese("我爱你")->true
 + ` ETools.vertify.isDate(str)`
-        
+
     验证日期
-        
+
     ETools.vertify.isDate("2015-12-12")->true
 + `ETools.vertify.isPostalCode(str)`
-        
+
     验证邮政编码
-        
+
     ETools.vertify.isPostalCode("400521")->true
 + `ETools.vertify.isRegisterUserName(str)`
-        
+
     验证登录名，只能输入5-20个以字母开头、可带数字、“_”、“.”的字串
-        
+
     ETools.vertify.isRegisterUserName("gong163")->true
 + ` ETools.vertify.isTrueName(str)`
-        
+
     校验用户姓名：只能输入1-30个以字母开头的字串
-        
+
     ETools.vertify.isTrueName("龚明华")->true
 + `ETools.vertify.isPassword(str)`
-        
+
     校验密码：只能输入6-20个字母、数字、下划线
-        
+
     ETools.vertify.isPassword("gong1632542142")->true
 
 #### Cookie操作
 + `ETools.cookie.setCookie(name, value, Hours)`
-        
+
     设置Cookie值
-        
+
     name:cookie的key，value:cookie的value，Hours：Cookie的超时时间
-        
+
     ETools.cookie.setCookie("username", "xiaoming", 0.5)
 + `ETools.cookie.getCookie(name)`
-        
+
     获取Cookie值
-        
+
     name:cookie的key
-        
+
     ETools.cookie.getCookie("username")->"xiaoming"
 + `ETools.cookie.delCookie(name)`
-        
+
     删除Cookie
-        
+
     name:cookie的key
-        
+
     ETools.cookie.delCookie("username")
 
 #### html格式操作
 + `ETools.openWindow(url,windowName,width,height)`
-        
+
     打开一个弹窗窗口
-        
+
     url打开的链接，windowName窗口的title，width窗口宽度，height窗口高度
-        
+
     ETools.openWindow("www.baidu.com","百度",500,600)
 
 #### jquery插件
 + `checkAll()`
-        
+
     表格的行的全选和反全选
-        
+
     `$(".checkAll").checkAll();`
-        
+
     需要给复选框绑定checkAll()事件。为其加上data-table属性，属性值指向要执行全选的table的id。
-        
+
     如果有多个复选框共同作用于同一个表格，给这些复选框加上相同的data-table属性值即可
-        
+
     <p><a href="http://www.gongminghua.site/ETools/checkAll">查看演示>></a> </p>

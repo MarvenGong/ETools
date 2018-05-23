@@ -5,7 +5,8 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
         typeof define === 'function' && define.amd ? define(factory) :
             (global.ETools = factory());
-}(this, (function () { 'use strict';
+}(this, (function () { 
+    'use strict';
     var ETools = {};
     var digitTest = /^\d+$/, keyBreaker = /([^\[\]]+)|(\[\])/g, paramTest = /([^?#]*)(#.*)?$/, prep = function (str) {
         return decodeURIComponent(str.replace(/\+/g, ' '));
@@ -706,8 +707,28 @@
             return (year + "-" + month + "-" + date);
         }
     };
-
-
+    /**
+     * 数组相关
+     */
+    ETools.array = {
+        init: function() {
+            Array.prototype.filterBy = this.filterBy;
+        },
+        filterBy: function(key, value) {
+            var ary = this;
+            var newAry = [];
+            for (var i = 0; i< ary.length; i++) {
+                if (ary[i][key] === value) {
+                    newAry.push(ary[i]);
+                }
+            }
+            if (newAry.length === 1) {
+                return newAry[0];
+            } else {
+                return newAry;
+            }
+        }
+    }
     /**
      * 全选和反全选
      */
@@ -737,6 +758,7 @@
             });
         };
     }
+    ETools.array.init();
     return ETools;
 
 })));

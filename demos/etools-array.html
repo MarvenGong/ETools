@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ETools数组测试</title>
+</head>
+<body>
+  <script src="../etools.js" type="text/javascript"></script>
+  <script>
+    var ary = [
+      {
+        name: '张三',
+        age: 12
+      },
+      {
+        name: '张三',
+        age: 33
+      },
+      {
+        name: 'lisi',
+        age: 22
+      }
+    ]
+    var obj = ary.filterBy('name', '张三');
+    console.log(obj);
+  </script>
+</body>
+</html>

@@ -9,6 +9,7 @@
 + Git 仓库地址 https://github.com/MarvenGong/ETools
 ***
 ### 版本说明
+* 1.2.3  修正了部分bug，新增array数组扩展，增加Array.filterBy方法
 * 1.2.2  修正了部分bug，新增string下的generateUUID和addNum方法
 * 1.0.9  修正了deparam函数依赖jquery的$.each函数的问题  
 
@@ -256,7 +257,13 @@
     校验密码：只能输入6-20个字母、数字、下划线
 
     ETools.vertify.isPassword("gong1632542142")->true
+#### 数组相关
++ `Array.filterBy(key, value)`
+   从对象数组中根据对象的key筛选值等于value的对象，如果键值对唯一则返回对象，如果不唯一则返回对象数组。
 
+   key: 对象中的键，value: 要筛选的键所对应的值
+
+   [{name: '张三',age: 12},{name: '张三',age: 33},{name: 'lisi',age: 22}].filterBy('name', '张三') -> [{name: '张三',age: 12},{name: '张三',age: 33}];
 #### Cookie操作
 + `ETools.cookie.setCookie(name, value, Hours)`
 

@@ -9,6 +9,7 @@
 + Git 仓库地址 https://github.com/MarvenGong/ETools
 ***
 ### 版本说明
++ 1.2.4  新增async相关函数用来处理异步函数常用方法
 * 1.2.3  修正了部分bug，新增array数组扩展，增加Array.filterBy方法
 * 1.2.2  修正了部分bug，新增string下的generateUUID和addNum方法
 * 1.0.9  修正了deparam函数依赖jquery的$.each函数的问题  
@@ -53,7 +54,15 @@
     event:事件对象
 
     <code>ETools.stopPropagation(event)</code>
+#### 异步函数相关
++ `ETools.async.wait(timestamp)`
 
+  在异步函数中等待指定的时间
+
+  timestamp 等待的时间的毫秒数
+  <code>async getUserList() {</code>
+  <code>  await ETools.async.wait(2000)</code>
+  <code>}</code>
 #### 时间日期相关
 + `ETools.datetime.compareDate(starate,endDate)`
 

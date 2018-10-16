@@ -4,6 +4,11 @@
   "description": "marvengong js tools",
   "main": "etools.js",
   "keyword":"etools",
+  "keywords": [
+    "etools",
+    "js常用函数",
+    "js工具"
+  ],
   "scripts": {},
   "author": "www.gongminghua.site/1637077309@qq.com",
   "license": "ISC"

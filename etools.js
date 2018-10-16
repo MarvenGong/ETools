@@ -5,7 +5,7 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
         typeof define === 'function' && define.amd ? define(factory) :
             (global.ETools = factory());
-}(this, (function () { 
+}(this, (function () {
     'use strict';
     var ETools = {};
     var digitTest = /^\d+$/, keyBreaker = /([^\[\]]+)|(\[\])/g, paramTest = /([^?#]*)(#.*)?$/, prep = function (str) {
@@ -566,6 +566,27 @@
             eval("try { win.resizeTo(width, height); } catch(e) { }");
             win.focus();
         }
+    };
+    /**
+     * 异步处理相关函数（只支持在async函数中使用，而且支持Promise的环境）
+     */
+    ETools.async = {
+      /**
+       * 在异步函数中等待指定的时间
+       * @param timestamp 等待的时间的毫秒数
+       */
+      wait: function(timestamp) {
+        if (window.Promise) {
+          return new Promise((resolve, reject) => {
+            setTimeout(function() {
+              resolve();
+            }, timestamp)
+          });
+        } else {
+          console.error('your enviroment does not support promise');
+          return null;
+        }
+      }
     };
     /**
      * 时间日期相关函数

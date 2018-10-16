@@ -9,7 +9,7 @@
 + Git 仓库地址 https://github.com/MarvenGong/ETools
 ***
 ### 版本说明
-+ 1.2.4  新增async相关函数用来处理异步函数常用方法
++ 1.2.5  新增async相关函数用来处理异步函数常用方法
 * 1.2.3  修正了部分bug，新增array数组扩展，增加Array.filterBy方法
 * 1.2.2  修正了部分bug，新增string下的generateUUID和addNum方法
 * 1.0.9  修正了deparam函数依赖jquery的$.each函数的问题  

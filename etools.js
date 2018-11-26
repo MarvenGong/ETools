@@ -726,6 +726,37 @@
             var date = rDate.getDate();
             if (date < 10) date = "0" + date;
             return (year + "-" + month + "-" + date);
+        },
+        /**
+         * 根据出生年月获取年龄
+         * @param {String} strBirthday 出生年月标准格式字符串 如：1991-08-20
+         */
+        getAgeByBirthday: function(strBirthday){  
+            var returnAge;
+            var strBirthdayArr=strBirthday.split("-");
+            var birthYear = strBirthdayArr[0];
+            var birthMonth = strBirthdayArr[1];
+            var birthDay = strBirthdayArr[2];
+            var d = new Date();
+            var nowYear = d.getYear();
+            var nowMonth = d.getMonth() + 1;
+            var nowDay = d.getDate();
+            if (nowYear == birthYear) {
+                returnAge = 0;//同年 则为0岁
+            } else {
+                returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天
+                var ageDiff = nowYear - birthYear ; //年之差
+                if (ageDiff > 0) {
+                    if (nowMonth == birthMonth) {
+                        var dayDiff = nowDay - birthDay;//日之差
+                        returnAge = dayDiff < 0 ? ageDiff - 1 : ageDiff;
+                    } else {
+                        var monthDiff = nowMonth - birthMonth;//月之差
+                        returnAge = monthDiff < 0 ? ageDiff - 1 : ageDiff
+                    }
+                }
+            }
+            return returnAge;//返回周岁年龄
         }
     };
     /**

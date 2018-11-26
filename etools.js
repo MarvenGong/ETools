@@ -738,7 +738,7 @@
             var birthMonth = strBirthdayArr[1];
             var birthDay = strBirthdayArr[2];
             var d = new Date();
-            var nowYear = d.getYear();
+            var nowYear = d.getFullYear();
             var nowMonth = d.getMonth() + 1;
             var nowDay = d.getDate();
             if (nowYear == birthYear) {

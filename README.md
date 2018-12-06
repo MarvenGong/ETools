@@ -9,6 +9,7 @@
 + Git 仓库地址 https://github.com/MarvenGong/ETools
 ***
 ### 版本说明
++ 1.2.8  新增datetime下根据身份证号码获取年龄的方法getAgeByIDCard
 + 1.2.7  新增datetime下根据出生日期获取年龄的方法getAgeByBirthday
 + 1.2.5  新增async相关函数用来处理异步函数常用方法
 * 1.2.3  修正了部分bug，新增array数组扩展，增加Array.filterBy方法
@@ -121,6 +122,14 @@
     birthdatStr 出生日期标准格式的字符串 如：1991-08-20
 
     ETools.datetime.getAgeByBirthday("1991-08-20") -- 27
+
+ + `ETools.datetime.getAgeByIDCard(idcard)`
+
+    根据出生日期获取年龄 如果传入的不是标准的身份证则返回false
+
+    idcard 身份证号 如："******19951208***x"
+
+    ETools.datetime.getAgeByIDCard("******19951208***x") -- 23  
 
 
 ####html格式操作

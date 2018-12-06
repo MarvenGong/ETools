@@ -757,6 +757,18 @@
                 }
             }
             return returnAge;//返回周岁年龄
+        },
+        /**
+         * 根据身份证号码获取年龄
+         * @param {String} idcard 身份证号码
+         */
+        getAgeByIDCard: function(idcard) {
+            if (!ETools.vertify.isIDCard(idcard)) {
+                console.error('身份证格式不正确无法获取年龄');
+                return false;
+            }
+            var birthDate = idcard.substr(6, 4) + '-' + idcard.substr(10, 2) + '-' + idcard.substr(12, 2);
+            return this.getAgeByBirthday(birthDate);
         }
     };
     /**

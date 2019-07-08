@@ -9,6 +9,7 @@
 + Git 仓库地址 https://github.com/MarvenGong/ETools
 ***
 ### 版本说明
+
 + 1.2.8  新增datetime下根据身份证号码获取年龄的方法getAgeByIDCard
 + 1.2.7  新增datetime下根据出生日期获取年龄的方法getAgeByBirthday
 + 1.2.5  新增async相关函数用来处理异步函数常用方法

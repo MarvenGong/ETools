@@ -81,7 +81,7 @@
                     var clone = src && isPlainObject(src) ? src : {};
                 }
 
-                target[name] = extend(deep, clone, copy);
+                target[name] = ETools.extend(deep, clone, copy);
             } else if (copy !== undefined) {
                 target[name] = copy;
             }

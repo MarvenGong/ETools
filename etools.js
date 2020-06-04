@@ -19,7 +19,7 @@
      * @param options 要合并的对象
      * @returns {*}
      */
-    ETools.extend = (deep, target, options) => {
+    ETools.extend = function(deep, target, options) {
         var copyIsArray;
         var toString = Object.prototype.toString;
         var hasOwn = Object.prototype.hasOwnProperty;
@@ -577,7 +577,7 @@
        */
       wait: function(timestamp) {
         if (window.Promise) {
-          return new Promise((resolve, reject) => {
+          return new Promise(function(resolve, reject){
             setTimeout(function() {
               resolve();
             }, timestamp)

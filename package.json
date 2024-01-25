@@ -1,8 +1,8 @@
 {
   "name": "etools",
-  "version": "1.3.2",
+  "version": "1.5.1",
   "description": "marvengong js tools",
-  "main": "etools.js",
+  "main": "./dist/index.js",
   "keyword": "etools",
   "keywords": [
     "etools",
@@ -28,7 +28,10 @@
   },
   "homepage": "https://github.com/MarvenGong/ETools",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
     "clean-webpack-plugin": "^4.0.0",
+    "eslint": "^8.56.0",
     "parcel": "^2.11.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",

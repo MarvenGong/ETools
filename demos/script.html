@@ -4,13 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>etools测试通过script引入</title>
   <script src="../dist/index.js"></script>
 </head>
 
 <body>
   <script>
-    console.log(ETools.extend(true, { a: 1 }, { b: 2 }))
+    console.log('对象拷贝', ETools.extend(true, { a: 1 }, { b: 2 }))
+    console.log('获取浏览器名称和版本', ETools.getExplorerInfo());
+    console.log('query序列化', ETools.deparam('a=1&b=2'));
+    console.log(ETools.html.htmlEncode('<p></p>'));
+    console.log('获取字符串长度', ETools.string.getStrLength('hello world'));
   </script>
 </body>
 

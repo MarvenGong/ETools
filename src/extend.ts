@@ -1,70 +1,79 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/**
+ * 复制或者合并对象
+ * @param deep 是否深度拷贝
+ * @param target 合并后的对象
+ * @param options 要合并的对象44433555
+ * @returns {*}
+ */
 export default function extend(deep: boolean, target: any, options: any) {
-  var copyIsArray;
-  var toString = Object.prototype.toString;
-  var hasOwn = Object.prototype.hasOwnProperty;
+  let copyIsArray;
+  let toString = Object.prototype.toString;
+  let hasOwn = Object.prototype.hasOwnProperty;
 
-  var class2type = {
-      '[object Boolean]': 'boolean',
-      '[object Number]': 'number',
-      '[object String]': 'string',
-      '[object Function]': 'function',
-      '[object Array]': 'array',
-      '[object Date]': 'date',
-      '[object RegExp]': 'regExp',
-      '[object Object]': 'object'
+  let class2type = {
+    '[object Boolean]': 'boolean',
+    '[object Number]': 'number',
+    '[object String]': 'string',
+    '[object Function]': 'function',
+    '[object Array]': 'array',
+    '[object Date]': 'date',
+    '[object RegExp]': 'regExp',
+    '[object Object]': 'object'
   };
 
-  var type = function (obj) {
-      return obj == null ? String(obj) : class2type[toString.call(obj)] || "object";
+  let type = function (obj) {
+    return obj == null ? String(obj) : class2type[toString.call(obj)] || 'object';
   };
 
-  var isWindow = function (obj) {
-      return obj && typeof obj === "object" && "setInterval" in obj;
+  let isWindow = function (obj) {
+    return obj && typeof obj === 'object' && 'setInterval' in obj;
   };
 
-  var isArray = Array.isArray || function (obj) {
-          return type(obj) === "array";
-      };
-
-  var isPlainObject = function (obj) {
-      if (!obj || type(obj) !== "object" || obj.nodeType || isWindow(obj)) {
-          return false;
-      }
-
-      if (obj.constructor && !hasOwn.call(obj, "constructor")
-          && !hasOwn.call(obj.constructor.prototype, "isPrototypeOf")) {
-          return false;
-      }
-
-      var key;
-      for (key in obj) {
-      }
-
-      return key === undefined || hasOwn.call(obj, key);
+  let isArray = Array.isArray || function (obj) {
+    return type(obj) === 'array';
   };
-  for (var name in options) {
-      var src = target[name];
-      var copy = options[name];
 
-      if (target === copy) {
-          continue;
-      }
+  let isPlainObject = function (obj) {
+    if (!obj || type(obj) !== 'object' || obj.nodeType || isWindow(obj)) {
+      return false;
+    }
 
-      if (deep && copy
+    if (obj.constructor && !hasOwn.call(obj, 'constructor')
+          && !hasOwn.call(obj.constructor.prototype, 'isPrototypeOf')) {
+      return false;
+    }
+
+    let key;
+    for (key in obj) {
+      console.info(key);
+    }
+    return key === undefined || hasOwn.call(obj, key);
+  };
+  for (let name in options) {
+    let src = target[name];
+    let copy = options[name];
+
+    if (target === copy) {
+      continue;
+    }
+
+    if (deep && copy
           && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
-          if (copyIsArray) {
-              copyIsArray = false;
-              var clone = src && isArray(src) ? src : [];
+      let clone
+      if (copyIsArray) {
+        copyIsArray = false;
+        clone = src && isArray(src) ? src : [];
 
-          } else {
-              var clone = src && isPlainObject(src) ? src : {};
-          }
-
-          target[name] = extend(deep, clone, copy);
-      } else if (copy !== undefined) {
-          target[name] = copy;
+      } else {
+        clone = src && isPlainObject(src) ? src : {};
       }
+
+      target[name] = extend(deep, clone, copy);
+    } else if (copy !== undefined) {
+      target[name] = copy;
+    }
   }
 
   return target;
-};
+}

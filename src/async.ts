@@ -1,4 +1,7 @@
-const async = {
+export interface IAsync {
+  wait: (timestamp: number) => void;
+}
+const async: IAsync = {
   /**
      * 在异步函数中等待指定的时间
      * @param timestamp 等待的时间的毫秒数

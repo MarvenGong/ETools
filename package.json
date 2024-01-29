@@ -1,6 +1,6 @@
 {
   "name": "etools",
-  "version": "1.5.1",
+  "version": "1.5.4",
   "description": "marvengong js tools",
   "main": "./dist/index.js",
   "keyword": "etools",
@@ -16,7 +16,7 @@
   },
   "author": "marvengong",
   "exports": {
-    "./etools": "./etools.js"
+    ".": "./dist/index.js"
   },
   "license": "ISC",
   "bugs": {

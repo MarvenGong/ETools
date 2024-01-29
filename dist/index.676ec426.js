@@ -582,7 +582,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _index = require("../dist/index");
 var _indexDefault = parcelHelpers.interopDefault(_index);
-(()=>{
+(async ()=>{
     console.log((0, _indexDefault.default).extend(true, {
         hello: 1
     }, {
@@ -595,11 +595,12 @@ var _indexDefault = parcelHelpers.interopDefault(_index);
     console.log("\u8BBE\u7F6Ecookie", (0, _indexDefault.default).cookie.setCookie("etools-test", "etools"));
     console.log("\u83B7\u53D6cookie", (0, _indexDefault.default).cookie.getCookie("etools-test"));
     console.log("\u5220\u9664cookie", (0, _indexDefault.default).cookie.delCookie("etools-test"));
+    console.log("\u65F6\u95F4\u5B57\u7B26\u4E32\u8F6CDate\u65F6\u95F4", (0, _indexDefault.default).datetime.parse("2022-01-01 00:00:00"));
+    console.log("\u65F6\u95F4\u52A0\u5929\u6570", (0, _indexDefault.default).datetime.getNewDay("2022-01-01 00:00:00", 2));
+    await (0, _indexDefault.default).async.wait(500);
     document.querySelector("#btn-new-window")?.addEventListener("click", ()=>{
         (0, _indexDefault.default).openWindow("https://www.baidu.com", "\u767E\u5EA6", 800, 600);
     });
-    console.log("\u65F6\u95F4\u5B57\u7B26\u4E32\u8F6CDate\u65F6\u95F4", (0, _indexDefault.default).datetime.parse("2022-01-01 00:00:00"));
-    console.log("\u65F6\u95F4\u52A0\u5929\u6570", (0, _indexDefault.default).datetime.getNewDay("2022-01-01 00:00:00", 2));
 })();
 
 },{"../dist/index":"7elyk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7elyk":[function(require,module,exports) {
